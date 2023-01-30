@@ -1,0 +1,30 @@
+spring.task.scheduling.pool.size: 1
+
+org:
+  jobrunr:
+    background-job-server.enabled: true
+    dashboard:
+      enabled: true
+      port: 8000
+
+spring:
+  quartz:
+    job-store-type: "memory"
+    jdbc:
+      initialize-schema: "always"
+    #job-store-type: memory
+    properties:
+      org.quartz.threadPool.threadCount: 5
+      org.quartz.jobStore.class: org.quartz.impl.jdbcjobstore.JobStoreTX
+      org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+      org.quartz.jobStore.dataSource: qds
+      org.quartz.dataSource.qds.driver: org.postgresql.Driver
+      org.quartz.dataSource.qds.URL: jdbc:postgresql://localhost:5432/mydb
+      org.quartz.dataSource.qds.user: postgres
+      org.quartz.dataSource.qds.password: postgres
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: postgres
+    password: postgres
+    type: org.springframework.jdbc.datasource.SimpleDriverDataSource

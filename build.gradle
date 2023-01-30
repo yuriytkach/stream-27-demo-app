@@ -1,0 +1,32 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.2'
+	id 'io.spring.dependency-management' version '1.1.0'
+	id 'io.freefair.lombok' version '6.6.1'
+}
+
+group = 'com.yuritkach.demo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-quartz'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+	implementation 'com.mchange:c3p0:0.9.5.5'
+
+	runtimeOnly 'org.postgresql:postgresql'
+
+	implementation 'org.jobrunr:jobrunr-spring-boot-starter:5.3.3'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
